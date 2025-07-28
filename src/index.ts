@@ -18,8 +18,16 @@ export async function Register(userId: string, password: string) {
     });
 
     console.log("✅ Hash saved to database");
-  } catch (err) {
-    console.error("❌ Data insertion error:", err);
+  } catch (err:any) {
+
+    if(err.code==="P2002"){
+        console.log("username already exist")
+    }
+    else{
+        console.error("❌ Data insertion error:", err);
+
+    }
+
   } finally {
     await prisma.$disconnect();
   }
