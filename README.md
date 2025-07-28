@@ -103,35 +103,6 @@ Why?
 | `proof.json` | ❌ No | Recomputed every login |
 | `userId` | ✅ Yes | To identify user |
 
-zk-password-auth/
-├── circuits/
-│   ├── password.circom           # Circom circuit definition
-│   ├── input.json                # Sample input for proof generation
-│   ├── build/                    # Compiled circuit artifacts
-│   │   ├── password.r1cs
-│   │   ├── password.wasm
-│   │   ├── password.sym
-│   │   └── password_final.zkey
-│   └── verification_key.json     # Used for proof verification
-│
-├── prover/
-│   ├── generateProof.js          # JS script to generate proof (proof.json & public.json)
-│   └── proof.json                # Generated ZK proof (output)
-│   └── public.json               # Public inputs (output)
-│
-├── verifier/
-│   ├── verifyProof.js            # JS script to verify the proof
-│
-├── utils/
-│   └── poseidon.js               # Poseidon hash utility
-│   └── utils.js                  # Helpers like stringToBigInt()
-│
-├── trusted_setup/
-│   ├── powersOfTau28_hez_final_10.ptau  # Downloaded or generated via snarkjs
-│
-├── package.json
-├── [README.md](http://readme.md/)
-└── .gitignore
 
 zk-password-proof/
 │
