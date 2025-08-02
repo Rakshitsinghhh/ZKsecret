@@ -121,7 +121,7 @@ async function testSeparateFunctions() {
 // Uncomment to test:
 
 // addDb({
-//     databaseUrl: "postgresql://neondb_owner:npg_JYbaKWeC3h6w@ep-holy-pine-a8vdyjk6-pooler.eastus2.azure.neon.tech/neondb?sslmode=require&channel_binding=require",
+//     databaseUrl: "",
 //     runMigration: true,        // Run migrations (default: true)
 //     envPath: '../.env',        // Path to .env file (default: '../.env')
 //     silent: false              // Show console logs (default: false)
