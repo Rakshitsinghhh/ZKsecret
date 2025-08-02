@@ -1,10 +1,9 @@
 // SEPARATED FUNCTIONS - No nested calls
 
-import { PrismaClient } from '@prisma/client';
-import { hasher } from './poseidon';
 import generateProof from './proof/GenProof';
 import VerifyProof from './proof/VerifyProof';
 import { Register } from './register';
+import addDb from './addDb';
 
 
 export interface VerifyResponse {
@@ -112,7 +111,7 @@ async function exampleSeparateUsage(userId: string, password: string) {
 // 🧪 TEST FUNCTIONS
 async function testSeparateFunctions() {
   try {
-    await exampleSeparateUsage("testuser7", "password123");
+    await exampleSeparateUsage("testuser1", "password123");
   } catch (error) {
     console.error("Test error:", error);
   }
@@ -120,5 +119,12 @@ async function testSeparateFunctions() {
 
 
 // Uncomment to test:
+
+// addDb({
+//     databaseUrl: "postgresql://neondb_owner:npg_JYbaKWeC3h6w@ep-holy-pine-a8vdyjk6-pooler.eastus2.azure.neon.tech/neondb?sslmode=require&channel_binding=require",
+//     runMigration: true,        // Run migrations (default: true)
+//     envPath: '../.env',        // Path to .env file (default: '../.env')
+//     silent: false              // Show console logs (default: false)
+//   })
 
 // testSeparateFunctions();
