@@ -4,18 +4,31 @@
   "description": "When a user logs in:",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc -b && node dist/index.js"
+    "test": "npm run build && node dist/index.js",
+    "compile": "circom circuit.circom --r1cs --wasm --sym -o ./",
+    "setup": "npm run compile && snarkjs powersoftau new bn128 8 pot8_0000.ptau && snarkjs powersoftau contribute pot8_0000.ptau pot8_0001.ptau --name=\"Dev\" -e=\"entropy\" && snarkjs powersoftau prepare phase2 pot8_0001.ptau pot8_final.ptau && snarkjs groth16 setup circuit.r1cs pot8_final.ptau circuit_0000.zkey && snarkjs zkey export verificationkey circuit_0000.zkey verification_key.json",
+    "setup:production": "npm run compile && snarkjs powersoftau new bn128 12 pot12_0000.ptau -v && snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name=\"Production contribution\" -v && snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v && snarkjs groth16 setup circuit.r1cs pot12_final.ptau circuit_0000.zkey && snarkjs zkey export verificationkey circuit_0000.zkey verification_key.json",
+    "clean": "rm -f *.ptau *.r1cs *.sym *.zkey verification_key.json circuit.wasm",
+    "build": "tsc -b",
+    "dev": "npm run build && node dist/index.js",
+    "debug": "npm run build && node --inspect dist/index.js",
+    "test": "npm run build && node dist/simpleTest.js",
+    "start": "npm run setup && npm run dev",
+    "verify": "node -e \"const snarkjs = require('snarkjs'); console.log('SnarkJS version:', snarkjs.version || 'installed');\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^6.12.0",
+    "@prisma/client": "^6.13.0",
     "circomlibjs": "^0.1.7",
     "ethers": "^6.15.0",
     "poseidon-lite": "^0.3.0",
-    "prisma": "^6.12.0",
+    "snarkjs": "^0.7.5",
     "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/snarkjs": "^0.7.9",
+    "prisma": "^6.13.0"
   }
 }

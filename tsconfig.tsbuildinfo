@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/poseidon.ts"],"version":"5.8.3"}
+{"root":["./src/index.ts","./src/poseidon.ts","./src/proof/GenProof.ts","./src/proof/VerifyProof.ts"],"version":"5.8.3"}
