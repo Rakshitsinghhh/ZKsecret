@@ -24,7 +24,6 @@ export async function Register(userId: string, password: string): Promise<void> 
       data: {
         UserId: userId,
         hash: hashString,
-        password: password, 
       },
     });
 
@@ -50,11 +49,8 @@ export async function Register(userId: string, password: string): Promise<void> 
     } else {
       console.error("❌ Data insertion error:", err);
     }
-  } finally {
-    // Disconnect Prisma client (optional: keep open if calling often)
-    await prisma.$disconnect();
   }
 }
 
 // Example direct call (remove or comment out in production)
-Register("bobo", "454545").catch(console.error);
+Register("rerer", "454545").catch(console.error);
