@@ -4,18 +4,8 @@ import { PrismaClient } from '@prisma/client';
 import { hasher } from './poseidon';
 import generateProof from './proof/GenProof';
 import VerifyProof from './proof/VerifyProof';
-import * as fs from 'fs';
-import * as path from 'path';
-import { exec } from 'child_process';
-import { promisify } from 'util';
 import { Register } from './register';
 
-
-export interface AddDbOptions {
-  runMigration?: boolean;
-  envPath?: string;
-  silent?: boolean;
-}
 
 export interface VerifyResponse {
   success: boolean;
@@ -130,4 +120,5 @@ async function testSeparateFunctions() {
 
 
 // Uncomment to test:
-testSeparateFunctions();
+
+// testSeparateFunctions();
